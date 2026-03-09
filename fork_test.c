@@ -1,24 +1,34 @@
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <unistd.h>
-
-int value = 5;
+#include <sys/types.h>
 
 int main() {
 
-    pid_t pid;
+    pid_t id_processo;
 
-    pid = fork();
+    id_processo = fork();
 
-    if (pid == 0) {
-        value += 15;
-        return 0;
+    if (id_processo == 0) {
+
+        printf("Sou o FILHO\n");
+        printf("Meu PID: %d\n", getpid());
+        printf("PID do meu pai: %d\n", getppid());
+
     }
 
-    else if (pid > 0) {
-        wait(NULL);
-        printf("PARENT: value = %d\n", value);
-        return 0;
+    else if (id_processo > 0) {
+
+        printf("Sou o PAI\n");
+        printf("Meu PID: %d\n", getpid());
+        printf("PID do meu filho: %d\n", id_processo);
+
     }
+
+    else {
+
+        printf("Erro ao criar processo\n");
+
+    }
+
+    return 0;
 }
