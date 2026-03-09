@@ -13,6 +13,7 @@ int main() {
         printf("Sou o FILHO\n");
         printf("Meu PID: %d\n", getpid());
         printf("PID do meu pai: %d\n", getppid());
+        printf("========\n");
 
     }
 
